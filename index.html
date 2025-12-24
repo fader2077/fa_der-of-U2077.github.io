@@ -1,21 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-TW">
-<head>
-    <meta charset="UTF-8">
-    <title>我的 Live2D 網站</title>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="李捷新 (Chieh-Hsin Li) - AI Researcher | NYCU Graduate Student | Deep Learning, LLM, Medical Image Analysis" />
+    <meta name="keywords" content="AI, Machine Learning, Deep Learning, Research, Taiwan, NYCU, Computer Science" />
+    <title>李捷新 (Chieh-Hsin Li) - AI Researcher</title>
+    
+    <!-- Live2D Widget CSS Override -->
     <style>
-        body {
-            background-color: #f0f2f5;
-            font-family: sans-serif;
-            text-align: center;
-            padding-top: 50px;
-        }
-        h1 { color: #333; }
-    </style>
-</head>
-<body>
-    <h1>歡迎來到我的個人網站！</h1>
-    <p>這裡即將出現一位可愛的 VTuber 看板娘。</p>
+      #live2d-widget {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        z-index: 999 !important;
+        pointer-events: auto !important;
+        width: 280px !important;
+        height: 280px !important;
+      }
+      
+      .live2d-widget-dialog-container {
+        z-index: 1000 !important;
+        position: fixed !important;
+        bottom: 300px !important;
+        left: 20px !important;
+      }
 
-    </body>
+      /* Prevent Live2D from blocking other elements */
+      #live2d-widget canvas {
+        pointer-events: auto !important;
+      }
+
+      /* Optional: Add shadow effect */
+      #live2d-widget::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 20px;
+        background: linear-gradient(to top, rgba(0,0,0,0.1), transparent);
+        border-radius: 0 0 10px 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Live2D Widget CDN -->
+    <script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+  </body>
 </html>
